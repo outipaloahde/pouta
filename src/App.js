@@ -40,8 +40,22 @@ class App extends React.Component {
         error: 'Please enter a value'
       })
      }
+   }
+   
+   saveCity = (e) => {
+     e.preventDefault();
+     const city = this.state.city;
+     console.log('called save')
+     localStorage.setItem(city, city)
+     console.log(localStorage) 
+   }
 
-     
+   removeCity = (e) => {
+     e.preventDefault();
+     const city = this.state.city
+     console.log('called remove')
+     localStorage.removeItem(city);
+     console.log(localStorage)
    }
   
   render() {
@@ -50,13 +64,14 @@ class App extends React.Component {
         <Header/>
         <Form getWeather={this.getWeather}/>
         <Weather
+        removeCity={this.removeCity}
+        saveCity={this.saveCity}
         temp={this.state.temp}
         city={this.state.city}
         country={this.state.country}
         desc={this.state.desc}
         img={this.state.img}
         error={this.state.error}
-        
         />
       </div>
     );
