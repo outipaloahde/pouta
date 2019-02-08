@@ -3,7 +3,9 @@ import Form from "./components/Form";
 import Header from "./components/Header";
 import Weather from "./components/Weather";
 import SavedCities from "./components/SavedCities";
-import api_key from './api_key';
+import api_key from "./api_key";
+import { Container, Row, Col } from "react-bootstrap";
+
 
 class App extends React.Component {
   state = {
@@ -18,14 +20,10 @@ class App extends React.Component {
 
   getWeather = async e => {
     e.preventDefault();
-    console.log(api_key)
-   const key = api_key
+    const key = api_key
     const city = e.target.elements.city.value;
-    const api_call = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`
-    ); //&appid=${api_key}
+    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`);
     const data = await api_call.json();
-    console.log(data)
     if (city) {
       this.setState({
         temp: data.main.temp,
@@ -50,9 +48,8 @@ class App extends React.Component {
   getSavedCity = async city => {
     console.log('city',city)
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city.item}&appid=${api_key}&units=metric`);
-    console.log(api_call);
     const data = await api_call.json();
-    console.log('data',data)
+    console.log(data)
     this.setState({
       temp: data.main.temp,
       city: data.name,
@@ -82,30 +79,39 @@ class App extends React.Component {
   };
 
   render() {
-    
     return (
       <div className="App">
-        <Header />
-        <SavedCities
-          getWeather={this.getWeather}
-          savedCities={this.savedCities}
-          myCities={this.state.myCities}
-          menuVisible={this.state.showMenu}
-          showMenu={this.showMenu}
-          closeMenu={this.closeMenu}
-          dropdownMenu={this.dropdownMenu}
-        />
-        <Form getWeather={this.getWeather} />
-        <Weather
-          removeCity={this.removeCity}
-          saveCity={this.saveCity}
-          temp={this.state.temp}
-          city={this.state.city}
-          country={this.state.country}
-          desc={this.state.desc}
-          img={this.state.img}
-          error={this.state.error}
-        />
+      <style>{'body { background-color: #263f66; margin-top: 25px; } '}</style>
+        <Container>
+          <Row>
+            <Col></Col>
+            <Col>
+              <Header />
+              <SavedCities
+                getSavedCity={this.getSavedCity}
+                getWeather={this.getWeather}
+                savedCities={this.savedCities}
+                myCities={this.state.myCities}
+                menuVisible={this.state.showMenu}
+                showMenu={this.showMenu}
+                closeMenu={this.closeMenu}
+                dropdownMenu={this.dropdownMenu}
+              />
+              <Form getWeather={this.getWeather} />
+              <Weather
+                removeCity={this.removeCity}
+                saveCity={this.saveCity}
+                temp={this.state.temp}
+                city={this.state.city}
+                country={this.state.country}
+                desc={this.state.desc}
+                img={this.state.img}
+                error={this.state.error}
+              />
+            </Col>
+            <Col></Col>
+          </Row>
+        </Container>
       </div>
     );
   }

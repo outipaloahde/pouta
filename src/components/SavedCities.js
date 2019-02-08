@@ -5,7 +5,6 @@ class SavedCities extends React.Component {
     showMenu: false
   }
 
-
   showMenu = e => {
     e.preventDefault();
 
@@ -21,13 +20,16 @@ class SavedCities extends React.Component {
       });
     }
   };
-
+  cityClickHandler = city => {
+    const c = city;
+    console.log(c)
+    this.props.getSavedCity(c);
+  };
 
   render() {
     const buttons = [];
     for (var i = 0; i < localStorage.length; i++) {
       buttons.push(localStorage.getItem(localStorage.key(i)));
-      console.log("buttons", buttons);
     }
     
     return (
@@ -42,45 +44,13 @@ class SavedCities extends React.Component {
              }}
               >
               {buttons.map(item => (
-                <button>{item}</button>
+                <button onClick={this.cityClickHandler(item)}>{item}</button>
               ))}
               </div>
            ) : null}
          </div>
-
-
        </div>
     );
   }
 }
 export default SavedCities;
-
-/**
- * render() {
-    const buttons = [];
-    for (var i = 0; i < localStorage.length; i++) {
-      buttons.push(localStorage.getItem(localStorage.key(i)));
-      console.log("buttons", buttons);
-    
-
-    return (
-      <div>
-        <div>
-          <button onClick={props.showMenu}>Kaupunkini</button>
-          {this.state.showMenu ? (
-            <div
-              className="menu"
-              ref={element => {
-                this.dropdownMenu = element;
-              }}
-            >
-              {buttons.map(item => (
-                <button onClick={this.getSavedCity(item)}>{item}</button>
-              ))}
-            </div>
-          ) : null}
-        </div>
-      </div>
-    );
-  
- */
