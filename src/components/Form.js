@@ -5,9 +5,12 @@ class Form extends React.Component {
         return (
             <form onSubmit={this.props.getWeather}>
                 <input type='text' name='city' placeholder='kaupunki'></input>
-                <button class="btn btn">Hae sää</button>
+                <button className="btn btn">Hae sää</button>
             </form>
         );
     }
 }
 export default Form;
+
+
+ 

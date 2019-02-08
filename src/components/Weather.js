@@ -6,11 +6,11 @@ const Weather = props => (
     {props.img && <img scr={`http://openweathermap.org/img/w/${props.img}.png`} alt='weather_image'/>}
     {props.city && props.country &&
     <p> {props.city}, {props.country}
-        <button type="button" class="btn btn" aria-label="Left Align" onClick={props.saveCity}>
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        <button type="button" className="btn btn" aria-label="Left Align" onClick={props.saveCity}>
+            <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
         </button>
-        <button type="button" class="btn btn" aria-label="Left Align" onClick={props.removeCity}>
-            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+        <button type="button" className="btn btn" aria-label="Left Align" onClick={props.removeCity}>
+            <span className="glyphicon glyphicon-minus" aria-hidden="true"></span>
         </button>
     </p>}
     {props.error && <p>{props.error}</p>}
