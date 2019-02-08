@@ -5,7 +5,7 @@ class SavedCities extends React.Component {
      
     return (
         <div>
-           <p>pöö</p> 
+           
         </div>
     );
   }

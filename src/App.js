@@ -48,11 +48,11 @@ class App extends React.Component {
   };
 
   getSavedCity = async city => {
-    const api_call = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`
-    );
+    console.log('city',city)
+    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city.item}&appid=${api_key}&units=metric`);
     console.log(api_call);
     const data = await api_call.json();
+    console.log('data',data)
     this.setState({
       temp: data.main.temp,
       city: data.name,
@@ -97,17 +97,13 @@ class App extends React.Component {
     }
   };
 
-  cityEventHandler = e => {
-    e.preventDefault();
-    this.getWeather(e);
-  };
-
   render() {
     const buttons = [];
     for (var i = 0; i < localStorage.length; i++) {
       buttons.push(localStorage.getItem(localStorage.key(i)));
       console.log("buttons", buttons);
     }
+    
     return (
       <div className="App">
         <Header />
@@ -121,8 +117,9 @@ class App extends React.Component {
                 this.dropdownMenu = element;
               }}
             >
-              <button> Menu item 1 </button>
-             {buttons.map(item => console.log(item))}
+            {buttons.map(item => (
+                  <button>{item}</button>   //onSubmit={this.getSavedCity({item})}
+                ))}
             </div>
           ) : null}
         </div>
@@ -153,73 +150,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-/*
-<div>
-            <button onClick={this.showMenu}>Kaupunkini</button>
-            {this.state.showMenu ? (
-              <div
-                className="menu"
-                ref={(element) => {
-                  this.dropdownMenu = element;
-                }}
-              >
-                {buttons.map(item => (
-                  <button onClick={this.cityEventHandler}>{item}</button>
-                ))}
-              </div>
-            ) : null}
-          </div>
-
-
-
-
-
-var someVar; 
-someVar = some_other_function();
-alert(someVar);
-someObj.addEventListener("click", function(){
-    some_function(someVar);
-}, false);
-
-
-
-
- <SavedCities
-        savedCities={this.savedCities}
-        myCities={this.state.myCities}/>
-
-
-
-        savedCities = async () => {
-     //const y = localStorage.length
-     console.log('LOCAL SAVE',localStorage.length)
-   //  if (localStorage.length > 0 && y < localStorage.length) {
-       for (const a in localStorage) {
-         const city = a
-         console.log('local storage kaupunki',city)
-         //const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`); //&appid=${api_key}
-        const x = data;
-        console.log('lontoo tiedot',x)
-         
-         
-         //const data = await api_call.json();
-         const savedCity = [];
-         savedCity.push({
-            temp: x.main.temp,
-            city: x.name,
-            country: x.sys.country,
-            desc: x.weather[0].description,
-            img: x.weather[0].icon,
-        })
-        console.log(savedCity)
-        
-        this.setState({
-            myCities: this.state.myCities.concat(savedCity)
-        });
-    } console.log('Tallennettu kaupungit ', this.state.myCities)
-    
- // }
-}
-  
-         */
