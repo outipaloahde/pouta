@@ -1,5 +1,5 @@
 ## Onko huomenna pouta?
-A simple weather app (in finnish though)
+A simple weather app (in finnish though).
 
 To run the app clone project.
 
