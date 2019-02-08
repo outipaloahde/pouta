@@ -44,7 +44,7 @@ class SavedCities extends React.Component {
              }}
               >
               {buttons.map(item => (
-                <button onClick={this.cityClickHandler(item)}>{item}</button>
+                <button onClick={() => this.cityClickHandler(item)}>{item}</button>
               ))}
               </div>
            ) : null}

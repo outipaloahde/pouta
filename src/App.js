@@ -47,7 +47,7 @@ class App extends React.Component {
 
   getSavedCity = async city => {
     console.log('city',city)
-    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city.item}&appid=${api_key}&units=metric`);
+    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`);
     const data = await api_call.json();
     console.log(data)
     this.setState({
@@ -118,3 +118,4 @@ class App extends React.Component {
 }
 
 export default App;
+
