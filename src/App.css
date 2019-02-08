@@ -1,16 +1,7 @@
-body {
-  background-color: #131e30;
+.App {
+  text-align: center;
 }
-.button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-  }
 
-  .btn {border-radius: 50%;}
+body {
+  background-color: #263f66;
+  margin-top: 25px; } 

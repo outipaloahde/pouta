@@ -1,5 +1,26 @@
 import React from "react";
 
+const btnStyle = {
+  background: '#4a5972',
+  color: '#b6b7ba',
+  fontSize: '14',
+  borderRadius: '4px',
+  margin: '2px',
+  padding: '12px 28px',
+  border: '0px',
+  fontFamily: 'Raleway'
+};
+const btn2Style = {
+  background: '#4a5972',
+  color: '#b6b7ba',
+  fontSize: '13px',
+  borderRadius: '4px',
+  margin: '2px',
+  padding: '8px 10px',
+  border: '0px',
+  fontFamily: 'Raleway'
+};
+
 class SavedCities extends React.Component {
   state = {
     showMenu: false
@@ -21,9 +42,7 @@ class SavedCities extends React.Component {
     }
   };
   cityClickHandler = city => {
-    const c = city;
-    console.log(c)
-    this.props.getSavedCity(c);
+    this.props.getSavedCity(city);
   };
 
   render() {
@@ -35,7 +54,7 @@ class SavedCities extends React.Component {
     return (
        <div>
          <div>
-           <button onClick={this.showMenu}>Kaupunkini</button>
+           <button onClick={this.showMenu} style={btnStyle}>Kaupunkini</button>
            {this.state.showMenu ? (
              <div
              className='menu'
@@ -44,7 +63,7 @@ class SavedCities extends React.Component {
              }}
               >
               {buttons.map(item => (
-                <button onClick={() => this.cityClickHandler(item)}>{item}</button>
+                <button onClick={() => this.cityClickHandler(item)} key={item} style={btn2Style}>{item}</button>
               ))}
               </div>
            ) : null}

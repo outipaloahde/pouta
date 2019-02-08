@@ -5,6 +5,7 @@ import Weather from "./components/Weather";
 import SavedCities from "./components/SavedCities";
 import api_key from "./api_key";
 import { Container, Row, Col } from "react-bootstrap";
+import './App.css';
 
 
 class App extends React.Component {
@@ -46,10 +47,8 @@ class App extends React.Component {
   };
 
   getSavedCity = async city => {
-    console.log('city',city)
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`);
     const data = await api_call.json();
-    console.log(data)
     this.setState({
       temp: data.main.temp,
       city: data.name,
@@ -81,7 +80,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-      <style>{'body { background-color: #263f66; margin-top: 25px; } '}</style>
+      <style>{'body { background-color: #3c4759; margin-top: 25px; } '}</style>
         <Container>
           <Row>
             <Col></Col>
