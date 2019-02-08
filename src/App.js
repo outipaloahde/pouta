@@ -3,9 +3,7 @@ import Form from "./components/Form";
 import Header from "./components/Header";
 import Weather from "./components/Weather";
 import SavedCities from "./components/SavedCities";
-//import data from './data.json'
-
-const api_key = "b58af858d25c0fff2f7452f1e5c4219c";
+import api_key from './api_key';
 
 class App extends React.Component {
   state = {
@@ -15,17 +13,19 @@ class App extends React.Component {
     desc: undefined,
     img: undefined,
     error: undefined,
-    myCities: [],
-    showMenu: false
+    myCities: []
   };
 
   getWeather = async e => {
     e.preventDefault();
+    console.log(api_key)
+   const key = api_key
     const city = e.target.elements.city.value;
     const api_call = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`
     ); //&appid=${api_key}
     const data = await api_call.json();
+    console.log(data)
     if (city) {
       this.setState({
         temp: data.main.temp,
@@ -81,49 +81,11 @@ class App extends React.Component {
     }
   };
 
-  showMenu = e => {
-    e.preventDefault();
-
-    this.setState({ showMenu: true }, () => {
-      document.addEventListener("click", this.closeMenu);
-    });
-  };
-
-  closeMenu = e => {
-    if (!this.dropdownMenu.contains(e.target)) {
-      this.setState({ showMenu: false }, () => {
-        document.removeEventListener("click", this.closeMenu);
-      });
-    }
-  };
-
   render() {
-    const buttons = [];
-    for (var i = 0; i < localStorage.length; i++) {
-      buttons.push(localStorage.getItem(localStorage.key(i)));
-      console.log("buttons", buttons);
-    }
     
     return (
       <div className="App">
         <Header />
-        <div>
-          <button onClick={this.showMenu}>Kaupunkini</button>
-
-          {this.state.showMenu ? (
-            <div
-              className="menu"
-              ref={element => {
-                this.dropdownMenu = element;
-              }}
-            >
-            {buttons.map(item => (
-                  <button>{item}</button>   //onSubmit={this.getSavedCity({item})}
-                ))}
-            </div>
-          ) : null}
-        </div>
-
         <SavedCities
           getWeather={this.getWeather}
           savedCities={this.savedCities}
