@@ -1,3 +1,15 @@
+## Onko huomenna pouta?
+A simple weather app (in finnish though)
+
+To run the app clone project.
+
+Make an api key in https://openweathermap.org/.
+
+Copy and paste the key in api_key.js file and:
+### npm i
+
+### yarn start
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
