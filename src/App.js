@@ -88,13 +88,7 @@ class App extends React.Component {
               <Header />
               <SavedCities
                 getSavedCity={this.getSavedCity}
-                getWeather={this.getWeather}
-                savedCities={this.savedCities}
-                myCities={this.state.myCities}
                 menuVisible={this.state.showMenu}
-                showMenu={this.showMenu}
-                closeMenu={this.closeMenu}
-                dropdownMenu={this.dropdownMenu}
               />
               <Form getWeather={this.getWeather} />
               <Weather

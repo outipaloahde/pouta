@@ -6,7 +6,7 @@ class Header extends React.Component {
     render() {
         return (
             <div>
-            <img src={require('../images/etana_logo.png')} alt='logo'></img>
+            <img src={require('../images/etana_logo_M.png')} alt='logo'></img>
            
            
             </div>
