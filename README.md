@@ -10,6 +10,10 @@ Copy and paste the key in api_key.js file and:
 
 ### yarn start
 
+
+
+----------------------------------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
